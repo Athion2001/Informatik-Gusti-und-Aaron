@@ -6,7 +6,7 @@ public class BoeserGustav{
     public BoeserGustav(){
         gustavIstNochNichtDa = false;
         while(!gustavIstNochNichtDa){
-            System.out.println("böser Gustav!");
+            System.out.println("böser Gustav und böse Marie");
         }
     }
 }
