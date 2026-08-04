@@ -1,9 +1,9 @@
-public class boeserGustav{
+public class BoeserGustav{
     boolean gustavIstNochNichtDa;
     public static void main(String[] args){
-        boeserGustav bG = new boeserGustav();
+        BoeserGustav bG = new BoeserGustav();
     }
-    public boeserGustav(){
+    public BoeserGustav(){
         gustavIstNochNichtDa = false;
         while(!gustavIstNochNichtDa){
             System.out.println("böser Gustav!");
