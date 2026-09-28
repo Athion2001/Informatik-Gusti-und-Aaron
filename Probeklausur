@@ -1,0 +1,43 @@
+private int zustand6(char pAkZeichen){
+    int naechsterZustand = -1;
+    if(pruefstack.isEmpty() && pAkZeichen == 'e'){
+        pruefstack.push('#');
+        pruefstack.push('e');
+        naechsterZustand = 5;
+    }
+    if(pruefstack.pop() == 'e' && pAkZeichen == 'r'){
+        naechsterZustand = 6;
+    }
+    if(pruefstack.isEmpty() && pAkZeichen == 'r'){
+        naechsterZustand = 3;
+    }
+    return naechsterZustand;
+}
+
+public class test{
+    private int index;
+    private String wort;
+    public test(String pWort){
+        index = 0;
+        wort = pWort;
+    }
+    public boolen wortPruefen(){
+        return zustand0(wort.charAt(index));
+    }
+
+    public boolean zustand0(char pImput){
+        if(index + 1 > pWort.length()){return false}
+        boolean akzeptiert = false;
+        switch(pImput){
+            case 'a':
+                akzeptiert = zustand1(pWort.charAt(index));
+                break;
+            case 'b':
+                akzeptiert = zustand2(pWort.charAt(index));
+                break;
+            default:
+                return false;
+                break;
+        }
+    }
+}
