@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=MatheServer
+comment0.text=\r\n\r\n\ Beschreibung\r\n\r\n\ @version\ 31.10.2021\r\n\ @author\ DIE\r\n
+comment1.params=pPortNum
+comment1.target=MatheServer(int)
+comment2.params=pClientIP\ pClientPort
+comment2.target=void\ processNewConnection(java.lang.String,\ int)
+comment3.params=pClientIP\ pClientPort\ pMessage
+comment3.target=void\ processMessage(java.lang.String,\ int,\ java.lang.String)
+comment4.params=pClientIP\ pClientPort
+comment4.target=void\ processClosingConnection(java.lang.String,\ int)
+comment5.params=pStr\ pNumber
+comment5.target=java.lang.String\ part(java.lang.String,\ int)
+comment5.text=\r\n\ Diese\ Anfrage\ liefert\ das\ Wort\ mit\ der\ angegebenen\ Wortnummer\ in\ dem\r\n\ angegebenen\ Text.\ Die\ W\u00F6rter\ sind\ dabei\ beginnend\ mit\ 0\ nummeriert\ und\r\n\ durch\ Leerzeichen\ voneinander\ getrennt.\ \r\n\ Falls\ kein\ Wort\ an\ der\ angegebenen\r\n\ Wortnummer\ existiert,\ wird\ ein\ leerer\ String\ zur\u00FCckgegeben.\r\n\ @param\ pStr\ der\ bezuegliche\ Leerzeichen\ zu\ zerlegende\ String\r\n\ @param\ pNumber\ der\ heraus\ zu\ trennende\ String\ (beginnend\ mit\ 0)\ \r\n\ @return\ das\ Wort\ auf\ dem\ String\ pStr,\ welches\ bezueglich\ einer\ \r\n\ Trennung\ mit\ Leerzeichen\ an\ der\ Stelle\ pNumber\ steht\r\n
+numComments=6
