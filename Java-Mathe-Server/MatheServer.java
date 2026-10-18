@@ -5,8 +5,14 @@
  * @version 2026
  * @author DIE
  */
-import JavaServer.Server;
+
 public class MatheServer extends Server {
+
+    public static void main(String[] args){
+        System.out.println("Server läuft");
+        MatheServer meinServer = new MatheServer(8080);
+        
+    }
 
     public MatheServer (int pPortNum) {
         super(pPortNum);
@@ -20,6 +26,31 @@ public class MatheServer extends Server {
 
     public void processMessage(String pClientIP, int pClientPort, String pMessage) {
         //Hier programmieren.
+        System.out.println(pMessage);
+        int a = Integer.valueOf(part(pMessage,1));
+        int b = Integer.valueOf(part(pMessage,2));
+        char op = part(pMessage,0).charAt(0);
+        int result;
+        switch(op){
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                result = a / b;
+                break;   
+            default:
+                result = 0;
+        }
+        String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + part(pMessage,2) + " ist " + String.valueOf(result);
+        
+        send(pClientIP, pClientPort, antw);
+        
     }
 
     public void processClosingConnection(String pClientIP, int pClientPort) {
