@@ -13,6 +13,9 @@ public class MatheClient extends Client
         System.out.println("Client läuft");
         MatheClient meinClient = new MatheClient("localhost",8080);
         meinClient.sendeRechnung("+:2:2");
+        meinClient.sendeRechnung("-:4:2");
+        meinClient.sendeRechnung("*:5:5");
+        meinClient.sendeRechnung("/:33:11");
         try {
             Thread.sleep(10000); 
         } catch (Exception e) {}
