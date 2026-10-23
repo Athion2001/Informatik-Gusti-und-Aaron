@@ -47,7 +47,7 @@ public class MatheServer extends Server {
             default:
                 result = 0;
         }
-        String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + part(pMessage,2) + " ist " + String.valueOf(result);
+        String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + " " + part(pMessage,2) + " ist " + String.valueOf(result);
         
         send(pClientIP, pClientPort, antw);
         
