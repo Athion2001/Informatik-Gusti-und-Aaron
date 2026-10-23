@@ -1,3 +1,4 @@
+package Goldbachtester;
 public class Goldbachtester{
     public static long i;
     public static void main(String args[]){

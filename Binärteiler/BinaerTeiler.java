@@ -1,3 +1,4 @@
+package Binärteiler;
 public class BinaerTeiler{
     private boolean akzeptiert;
     private char akk;
