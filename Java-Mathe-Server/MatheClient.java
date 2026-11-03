@@ -11,11 +11,13 @@ public class MatheClient extends Client
 {
     public static void main(String[] args){
         System.out.println("Client läuft");
-        MatheClient meinClient = new MatheClient("localhost",8080);
-        meinClient.sendeRechnung("+:2:2");
-        meinClient.sendeRechnung("-:4:2");
-        meinClient.sendeRechnung("*:5:5");
-        meinClient.sendeRechnung("/:33:11");
+        String ID = "0";
+        MatheClient meinClient = new MatheClient("172.29.4.46",300);
+        meinClient.anmeldung(ID,"123");
+        meinClient.sendeRechnung("+:2:2:" + ID);
+        meinClient.sendeRechnung("-:4:2:" + ID);
+        meinClient.sendeRechnung("*:5:5:" + ID);
+        meinClient.sendeRechnung("/:33:11:" + ID);
         try {
             Thread.sleep(10000); 
         } catch (Exception e) {}
@@ -31,6 +33,12 @@ public class MatheClient extends Client
         System.out.flush();
     } 
     
+    public void anmeldung(String pID, String pPw){
+        String nachricht = "a:" + pID + ":" + pPw;
+        System.out.println(nachricht);
+        System.out.println("Anmeldung erfolgt...");
+        super.send(nachricht);
+    }
     public void sendeRechnung(String pRechnung)
     {
         super.send(pRechnung);

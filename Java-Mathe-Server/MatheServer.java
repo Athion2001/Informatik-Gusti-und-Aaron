@@ -7,6 +7,8 @@
  */
 
 public class MatheServer extends Server {
+    static List<String> angemeldeteClients;
+    static List<String> bClients;
 
     public static void main(String[] args){
         System.out.println("Server läuft");
@@ -16,6 +18,10 @@ public class MatheServer extends Server {
 
     public MatheServer (int pPortNum) {
         super(pPortNum);
+        bClients = new List<String>();
+        angemeldeteClients = new List<String>();
+        bClients.append("0:123");
+
     }
 
     public void processNewConnection(String pClientIP, int pClientPort) {
@@ -27,30 +33,60 @@ public class MatheServer extends Server {
     public void processMessage(String pClientIP, int pClientPort, String pMessage) {
         //Hier programmieren.
         System.out.println(pMessage);
-        int a = Integer.valueOf(part(pMessage,1));
-        int b = Integer.valueOf(part(pMessage,2));
-        char op = part(pMessage,0).charAt(0);
-        int result;
-        switch(op){
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            case '*':
-                result = a * b;
-                break;
-            case '/':
-                result = a / b;
-                break;   
-            default:
-                result = 0;
+        boolean angemeldet = false;
+        if(part(pMessage,0).equals("a")){
+            bClients.toFirst();
+            while(bClients.hasAccess()){
+                if(part(pMessage,1).equals(part(bClients.getContent(),0))){
+                    if(part(pMessage,2).equals(part(bClients.getContent(),1))){
+                        send(pClientIP, pClientPort, "Anmeldung erfolgreich");
+                        angemeldeteClients.append(part(pMessage,1));
+                        angemeldet = true;
+                        break;
+                    }
+                }
+                bClients.next();
+            }
+            if(!angemeldet){send(pClientIP, pClientPort, "Anmeldung war nicht erfolgreich");}
+            
         }
-        String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + " " + part(pMessage,2) + " ist " + String.valueOf(result);
-        
-        send(pClientIP, pClientPort, antw);
-        
+        else{
+            angemeldet = false;
+            //überrpüfung ob die ID angemeldet ist
+            angemeldeteClients.toFirst();
+            while(angemeldeteClients.hasAccess()){
+                if(part(pMessage,3).equals(angemeldeteClients.getContent())){
+                    angemeldet = true;
+                    break;
+                }
+                angemeldeteClients.next();
+            }
+            if(!angemeldet){send(pClientIP, pClientPort, "du bist nicht angemeldet");}
+            else{
+                int a = Integer.valueOf(part(pMessage,1));
+                int b = Integer.valueOf(part(pMessage,2));
+                char op = part(pMessage,0).charAt(0);
+                int result;
+                switch(op){
+                    case '+':
+                        result = a + b;
+                        break;
+                    case '-':
+                        result = a - b;
+                        break;
+                    case '*':
+                        result = a * b;
+                        break;
+                    case '/':
+                        result = a / b;
+                        break;   
+                    default:
+                        result = 0;
+                }
+                String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + " " + part(pMessage,2) + " ist " + String.valueOf(result);
+                send(pClientIP, pClientPort, antw);
+            }          
+        }
     }
 
     public void processClosingConnection(String pClientIP, int pClientPort) {
