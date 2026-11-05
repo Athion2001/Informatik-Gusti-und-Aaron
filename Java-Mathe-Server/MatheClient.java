@@ -41,10 +41,10 @@ public class MatheClient extends Client
         super.send(nachricht);
     }
     public void abmeldung(String pID){
-        super.send("ab:" + pID);
+        super.send("b:" + pID);
     }
     public void sendeRechnung(String pRechnung)
     {
-        super.send(pRechnung);
+        super.send("r:" + pRechnung);
     } 
 }
