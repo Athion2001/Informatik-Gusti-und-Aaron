@@ -33,23 +33,21 @@ public class MatheServer extends Server {
     public void processMessage(String pClientIP, int pClientPort, String pMessage) {
         //Hier programmieren.
         System.out.println(pMessage);
-        boolean angemeldet = false;
-        if(part(pMessage,0).equals("a")){
-            bClients.toFirst();
-            while(bClients.hasAccess()){
-                if(part(pMessage,1).equals(part(bClients.getContent(),0))){
-                    if(part(pMessage,2).equals(part(bClients.getContent(),1))){
-                        send(pClientIP, pClientPort, "Anmeldung erfolgreich");
-                        angemeldeteClients.append(part(pMessage,1));
-                        angemeldet = true;
-                        break;
-                    }
-                }
-                bClients.next();
+        char switcher = part(pMessage,0).charAt(0);
+        switch(op){
+            case 'a':
+                anmeldung(pMessage);
+                break;
+            case 'b':
+                abmeldung(pMessage);
+                break;   
+            default:
+                result = 0;
             }
-            if(!angemeldet){send(pClientIP, pClientPort, "Anmeldung war nicht erfolgreich");}
+        
+        
             
-        }
+        
         else{
             angemeldet = false;
             //überrpüfung ob die ID angemeldet ist
@@ -105,6 +103,7 @@ public class MatheServer extends Server {
      * @return das Wort auf dem String pStr, welches bezueglich einer 
      * Trennung mit Trennzeichen an der Stelle pNumber steht
      */
+
     private String part(String pStr, int pNumber) {
         String[] help = pStr.split(":");
         if (pNumber < help.length) {
@@ -113,7 +112,33 @@ public class MatheServer extends Server {
         else return "";
     }  
     
+    private void anmeldung(String pMessage){
+        boolean angemeldet = false;
+        if(part(pMessage,0).equals("a")){
+            bClients.toFirst();
+            while(bClients.hasAccess()){
+                if(part(pMessage,1).equals(part(bClients.getContent(),0))){
+                    if(part(pMessage,2).equals(part(bClients.getContent(),1))){
+                        send(pClientIP, pClientPort, "Anmeldung erfolgreich");
+                        angemeldeteClients.append(part(pMessage,1));
+                        angemeldet = true;
+                        break;
+                    }
+                }
+                bClients.next();
+            }
+            if(!angemeldet){send(pClientIP, pClientPort, "Anmeldung war nicht erfolgreich");}
+            
+        }
+    }   
     
-    
+    private void abmeldung(String pMessage){
+        angemeldeteClients.toFirst();
+            while(angemeldeteClients.hasAccess()){
+                if(part(pMessage,1).equals(angemeldeteClients.getContent())){
+                    angemeldeteClients.remove();
+                }
+            }
+    }
     
 }
