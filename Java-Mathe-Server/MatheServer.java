@@ -39,7 +39,7 @@ public class MatheServer extends Server {
                 anmeldung(pClientIP, pClientPort, pMessage);
                 break;
             case 'b':
-                abmeldung(pMessage);
+                abmeldung(pClientIP, pClientPort, pMessage);
                 break;
             case 'r':
                 rechnung(pClientIP, pClientPort, pMessage);
@@ -53,27 +53,7 @@ public class MatheServer extends Server {
         this.send(pClientIP, pClientPort, "Du bist abgemeldet.");
         System.out.println(pClientIP + "/" + pClientPort + ": Abmeldung"); //Konsolenausgabe zur Dokumentation auf Serverseite.
     }
-
-    /**
-     * Diese Anfrage liefert das Wort mit der angegebenen Wortnummer in dem
-     * angegebenen Text. Die Wörter sind dabei beginnend mit 0 nummeriert und
-     * durch Trennzeichen voneinander getrennt. 
-     * Falls kein Wort an der angegebenen
-     * Wortnummer existiert, wird ein leerer String zurückgegeben.
-     * @param pStr der bezuegliche Trennzeichen zu zerlegende String
-     * @param pNumber der heraus zu trennende String (beginnend mit 0) 
-     * @return das Wort auf dem String pStr, welches bezueglich einer 
-     * Trennung mit Trennzeichen an der Stelle pNumber steht
-     */
-
-    private String part(String pStr, int pNumber) {
-        String[] help = pStr.split(":");
-        if (pNumber < help.length) {
-            return help[pNumber];
-        }
-        else return "";
-    }  
-    
+   
     private void anmeldung(String pClientIP, int pClientPort, String pMessage){
         boolean angemeldet = false;
         if(part(pMessage,0).equals("a")){
@@ -94,11 +74,12 @@ public class MatheServer extends Server {
         }
     }   
     
-    private void abmeldung(String pMessage){
+    private void abmeldung(String pClientIP, int pClientPort, String pMessage){
         angemeldeteClients.toFirst();
             while(angemeldeteClients.hasAccess()){
                 if(part(pMessage,1).equals(angemeldeteClients.getContent())){
                     angemeldeteClients.remove();
+                    send(pClientIP, pClientPort, "Abmeldung Erfolgreich");
                 }
             }
     }
@@ -108,7 +89,7 @@ public class MatheServer extends Server {
         //überrpüfung ob die ID angemeldet ist
         angemeldeteClients.toFirst();
         while(angemeldeteClients.hasAccess()){
-            if(part(pMessage,3).equals(angemeldeteClients.getContent())){
+            if(part(pMessage,4).equals(angemeldeteClients.getContent())){
                 angemeldet = true;
                 break;
             }
@@ -116,9 +97,9 @@ public class MatheServer extends Server {
         }
         if(!angemeldet){send(pClientIP, pClientPort, "du bist nicht angemeldet");}
         else{
-            int a = Integer.valueOf(part(pMessage,1));
-            int b = Integer.valueOf(part(pMessage,2));
-            char op = part(pMessage,0).charAt(0);
+            int a = Integer.valueOf(part(pMessage,2));
+            int b = Integer.valueOf(part(pMessage,3));
+            char op = part(pMessage,1).charAt(0);
             int result;
             switch(op){
                 case '+':
@@ -136,9 +117,28 @@ public class MatheServer extends Server {
                 default:
                     result = 0;
             }
-            String antw = "das ergebnis aus " + part(pMessage,1) + " " + part(pMessage,0) + " " + part(pMessage,2) + " ist " + String.valueOf(result);
+            String antw = "das ergebnis aus " + part(pMessage,2) + " " + part(pMessage,1) + " " + part(pMessage,3) + " ist " + String.valueOf(result);
             send(pClientIP, pClientPort, antw);
         }
     }
     
+    /**
+     * Diese Anfrage liefert das Wort mit der angegebenen Wortnummer in dem
+     * angegebenen Text. Die Wörter sind dabei beginnend mit 0 nummeriert und
+     * durch Trennzeichen voneinander getrennt. 
+     * Falls kein Wort an der angegebenen
+     * Wortnummer existiert, wird ein leerer String zurückgegeben.
+     * @param pStr der bezuegliche Trennzeichen zu zerlegende String
+     * @param pNumber der heraus zu trennende String (beginnend mit 0) 
+     * @return das Wort auf dem String pStr, welches bezueglich einer 
+     * Trennung mit Trennzeichen an der Stelle pNumber steht
+     */
+
+    private String part(String pStr, int pNumber) {
+        String[] help = pStr.split(":");
+        if (pNumber < help.length) {
+            return help[pNumber];
+        }
+        else return "";
+    }  
 }
