@@ -47,6 +47,8 @@ public class MatheServer extends Server {
             case 'r':
                 rechnung(pClientIP, pClientPort, pMessage);
                 break;     
+            case 'n':
+                registierung(pClientIP, pClientPort, pMessage);
             default:
                 
             }
@@ -55,6 +57,22 @@ public class MatheServer extends Server {
     public void processClosingConnection(String pClientIP, int pClientPort) {
         this.send(pClientIP, pClientPort, "Du bist abgemeldet.");
         System.out.println(pClientIP + "/" + pClientPort + ": Abmeldung"); //Konsolenausgabe zur Dokumentation auf Serverseite.
+    }
+
+    private void registierung(String pClientIP, int pClientPort, String pMessage){
+        boolean angemeldet = false;
+        bClients.toFirst();
+        while(bClients.hasAccess()){
+            if(part(pMessage, 1).equals(part(bClients.getContent(),0))){
+                send(pClientIP, pClientPort, "Nutzer-ID ist bereits vergeben");
+                angemeldet = true;
+            }
+            bClients.next();
+        }
+        if(!angemeldet){
+            bClients.append(part(pMessage, 1)+part(pMessage, 2));
+            send(pClientIP, pClientPort, "Registirerung war erflogreich");
+        }
     }
    
     private void anmeldung(String pClientIP, int pClientPort, String pMessage){

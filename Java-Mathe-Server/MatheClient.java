@@ -13,6 +13,7 @@ public class MatheClient extends Client
         System.out.println("Client läuft");
         String ID = "0";
         MatheClient meinClient = new MatheClient("localhost",8080);
+        meinClient.registrierung(ID + "123");
         meinClient.anmeldung(ID,"123");
         meinClient.sendeRechnung("+:2:2:" + ID);
         meinClient.sendeRechnung("-:4:2:" + ID);
@@ -27,13 +28,14 @@ public class MatheClient extends Client
     {
         super(pServerIP, pServerPort);
     }
-    
     public void processMessage(String pMessage)
     {
         System.out.println(pMessage);
         System.out.flush();
     } 
-    
+    public void registrierung(String pNachicht){
+        send("n" + pNachicht);
+    }
     public void anmeldung(String pID, String pPw){
         String nachricht = "a:" + pID + ":" + pPw;
         System.out.println(nachricht);
