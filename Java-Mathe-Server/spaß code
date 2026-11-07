@@ -1,0 +1,18 @@
+public class Spaß{
+
+    public static void main(String[] args){}
+    public spaß(){}
+
+    public gustav()int pCounter{
+        for(int i = 0; i< pCounter; i++){
+            Syste.out.printLn("noch ein gustav");
+        }
+    }
+
+    public dfs(){
+        this.note = akGraph.getFirstNote();
+        while(this.note.hatUnbesuchteNachbarn){
+            
+        }
+    }
+}
