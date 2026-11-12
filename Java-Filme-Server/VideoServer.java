@@ -104,10 +104,10 @@ public class VideoServer extends Server
                 FilmeSenden(pClientIP, pClientPort, keyWord);
                 break;
             case "STATUS":
-                ausleihStatus(String pClientIP, int keyWord);
+                ausleihStatus(pClientIP, pClientPort);
                 break;
             case "AUSLEIHEN":
-                filmAusleihen(String pClientIP, int pClientPort, String keyWord);
+                filmAusleihen(pClientIP, pClientPort,  keyWord);
                 break;
             case "ENDE":
                 kundeAbmelden(pClientIP, pClientPort);

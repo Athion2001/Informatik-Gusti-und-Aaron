@@ -22,7 +22,6 @@
  * @author Qualitaets- und UnterstuetzungsAgentur - Landesinstitut fuer Schule
  * @version 30.08.2016
  */
-package javaserver;
 
 import java.net.*;
 
