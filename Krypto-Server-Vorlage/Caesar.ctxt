@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Caesar
+comment0.text=\r\n\ Verschluesselungslogik\:\ Caesar-Verfahren\ (Vorlage).\r\n\r\n\ Diese\ Klasse\ kennt\ weder\ das\ Netzwerk\ noch\ das\ Protokoll.\r\n\ Sie\ arbeitet\ nur\ mit\ Texten\ und\ einem\ Schluessel.\r\n\r\n\ Festlegung\ fuer\ unseren\ Server\:\r\n\ \ -\ Grossbuchstaben\ A-Z\ und\ Kleinbuchstaben\ a-z\ werden\ verschoben,\r\n\ \ \ \ die\ Gross-/Kleinschreibung\ bleibt\ erhalten.\r\n\ \ -\ Alle\ anderen\ Zeichen\ (Leerzeichen,\ Ziffern,\ Satzzeichen,\ Umlaute)\r\n\ \ \ \ bleiben\ unveraendert.\r\n\r\n\ Pruefen\ koennt\ ihr\ eure\ Loesung\ mit\ der\ Klasse\ CaesarTest\ (main-Methode\ starten).\r\n\r\n\ @author\ (Namen\ eintragen)\r\n\ @version\ (Datum)\r\n
+comment1.params=pKlartext\ pSchluessel
+comment1.target=java.lang.String\ verschluesseln(java.lang.String,\ int)
+comment1.text=\r\n\ Verschluesselt\ pKlartext,\ indem\ jeder\ Buchstabe\ um\ pSchluessel\r\n\ Stellen\ im\ Alphabet\ nach\ hinten\ verschoben\ wird.\r\n
+comment2.params=pGeheimtext\ pSchluessel
+comment2.target=java.lang.String\ entschluesseln(java.lang.String,\ int)
+comment2.text=\r\n\ Entschluesselt\ pGeheimtext,\ indem\ jeder\ Buchstabe\ um\ pSchluessel\r\n\ Stellen\ im\ Alphabet\ nach\ vorne\ verschoben\ wird.\r\n
+numComments=3

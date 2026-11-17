@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=CaesarTest
+comment0.text=\r\n\ Selbsttest\ fuer\ die\ Klasse\ Caesar.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=pName\ pIst\ pSoll
+comment2.target=void\ pruefe(java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=3

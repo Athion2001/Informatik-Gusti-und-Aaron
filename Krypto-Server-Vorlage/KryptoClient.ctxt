@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=KryptoClient
+comment0.text=\r\n\ Kryptologie-Client\ (Vorlage).\r\n\r\n\ Der\ Client\ kennt\ das\ Protokoll\ (Aufbau\ der\ Anfragen),\ aber\ nicht\ die\r\n\ Verschluesselung\ selbst\ -\ die\ macht\ der\ Server.\r\n\r\n\r\n\ @author\ (Namen\ eintragen)\r\n\ @version\ (Datum)\r\n
+comment1.params=pServerIP\ pServerPort
+comment1.target=KryptoClient(java.lang.String,\ int)
+comment2.params=pVerfahren\ pSchluessel\ pText
+comment2.target=void\ verschluesseln(java.lang.String,\ int,\ java.lang.String)
+comment3.params=pVerfahren\ pSchluessel\ pText
+comment3.target=void\ entschluesseln(java.lang.String,\ int,\ java.lang.String)
+comment4.params=
+comment4.target=void\ beenden()
+comment5.params=pMessage
+comment5.target=void\ processMessage(java.lang.String)
+numComments=6

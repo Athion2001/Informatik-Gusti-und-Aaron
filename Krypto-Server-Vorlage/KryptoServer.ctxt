@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=KryptoServer
+comment0.text=\r\n\ Kryptologie-Server\ (Vorlage).\r\n\r\n\ Aufbau\ in\ drei\ Schichten\ -\ haltet\ sie\ bitte\ getrennt\:\r\n\ \ 1.\ Netzwerk\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ Klasse\ Server\ (vorgegeben,\ nicht\ aendern)\r\n\ \ 2.\ Protokollverarbeitung\:\ diese\ Klasse\ (processMessage,\ bearbeiteAnfrage)\r\n\ \ 3.\ Verschluesselung\:\ \ \ \ \ \ Klasse\ Caesar\ (kennt\ weder\ Netzwerk\ noch\ Protokoll)\r\n\r\n\ Schreibt\ hier\ euer\ Protokoll\ aus\ Aufgabe\ 2\ als\ Kommentar\ auf\:\r\n\r\n\ \ \ TODO\:\ Anfragen\ (Client\ an\ Server)\ und\ Antworten\ (Server\ an\ Client)\r\n\r\n\ @author\ (Namen\ eintragen)\r\n\ @version\ (Datum)\r\n
+comment1.params=pPort
+comment1.target=KryptoServer(int)
+comment2.params=pClientIP\ pClientPort
+comment2.target=void\ processNewConnection(java.lang.String,\ int)
+comment3.params=pClientIP\ pClientPort\ pMessage
+comment3.target=void\ processMessage(java.lang.String,\ int,\ java.lang.String)
+comment4.params=pClientIP\ pClientPort
+comment4.target=void\ processClosingConnection(java.lang.String,\ int)
+comment5.params=pAnfrage
+comment5.target=java.lang.String\ bearbeiteAnfrage(java.lang.String)
+comment5.text=\r\n\ Wertet\ eine\ Anfrage\ nach\ eurem\ Protokoll\ aus\ und\ liefert\ die\ Antwort.\r\n\ Diese\ Methode\ soll\ KEINE\ Netzwerkmethoden\ (send,\ closeConnection)\ benutzen,\r\n\ damit\ man\ sie\ auch\ ohne\ Verbindung\ testen\ kann.\r\n\r\n\ Reihenfolge-Tipp\:\ Erst\ pruefen,\ ob\ die\ Anfrage\ gueltig\ ist\ (Befehl,\ Verfahren,\r\n\ Schluessel,\ Text),\ dann\ erst\ die\ Klasse\ Caesar\ aufrufen.\r\n
+comment6.params=pText\ pNummer
+comment6.target=java.lang.String\ feldAn(java.lang.String,\ int)
+comment7.params=pText
+comment7.target=java.lang.String\ loescheErstesFeld(java.lang.String)
+numComments=8
