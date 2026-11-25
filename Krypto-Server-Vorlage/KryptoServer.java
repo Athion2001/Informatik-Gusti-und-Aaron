@@ -40,9 +40,21 @@ public class KryptoServer extends Server
         //       muss der Server hier nach der Antwort die Verbindung beenden
 
         String verfahren = feldAn(pMessage, 1);
+        String operation = feldAn(pMessage, 2);
         switch(verfahren){
             case "Caesar":
-                
+                if(operation.equals("Verschlüsseln")){
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "verschlüsselt :" + Caesar.verschluesseln(feldAn(pMessage,4),feldAn(pMessage,3)));
+                }
+                else if(operation.equals("Entschlüsseln"){
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "entschlüsselt :" + Caesar.entschluesseln(feldAn(pMessage,4),feldAn(pMessage,3)));
+                }
+                else{
+                    send(pClientIP, pClientPort, "-FEHLER:Unbekannter Operator");
+                }
+                break;
+            default:
+                send(pClientIP, pClientPort, "-FEHLER:Unbekanntes Verfahren");
         }
     }
 
