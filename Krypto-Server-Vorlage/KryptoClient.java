@@ -16,26 +16,16 @@ public class KryptoClient extends Client
     }
     public static void main(String[] args) {
         KryptoClient meinClient = new KryptoClient("localhost", 8080);
+        meinClient.Caesar("Verschlüsseln","1","Gustav ist blöd");
     }
 
     // ---------------------------------------------------------------
     // Anfragen nach Protokoll
     // ---------------------------------------------------------------
 
-    public void verschluesseln(String pVerfahren, int pSchluessel, String pText)
+    public void Caesar(String pOperator, String pSchluessel, String pText)
     {
-        send("U:Ver");
-        send("V:" + pVerfahren);
-        send("S:" + pSchluessel);
-        send("T:" + pText);
-    }
-
-    public void entschluesseln(String pVerfahren, int pSchluessel, String pText)
-    {
-        send("U:Ent");
-        send("V:" + pVerfahren);
-        send("S:" + pSchluessel);
-        send("T:" + pText);
+        send("Caesar:" + pOperator + ":" + pSchluessel + ":" + pText);
     }
 
     public void beenden()
