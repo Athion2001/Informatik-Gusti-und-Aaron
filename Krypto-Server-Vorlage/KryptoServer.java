@@ -37,8 +37,13 @@ public class KryptoServer extends Server
         send(pClientIP, pClientPort, antwort);
 
         // TODO: Wenn euer Protokoll ein Verbindungsende vorsieht (z. B. "ENDE"),
-        //       muss der Server hier nach der Antwort die Verbindung beenden.
-       
+        //       muss der Server hier nach der Antwort die Verbindung beenden
+
+        String verfahren = feldAn(pMessage, 1);
+        switch(verfahren){
+            case "Caesar":
+                
+        }
     }
 
     public void processClosingConnection(String pClientIP, int pClientPort)
