@@ -16,7 +16,8 @@ public class KryptoClient extends Client
     }
     public static void main(String[] args) {
         KryptoClient meinClient = new KryptoClient("localhost", 8080);
-        meinClient.Caesar("Verschlüsseln","1","Gustav ist blöd");
+        meinClient.Caesar("Verschlüsseln","1","Gustav ist bloed");
+        meinClient.Caesar("Entschlüsseln","1","Hvtubw jtu cmpfe");
     }
 
     // ---------------------------------------------------------------

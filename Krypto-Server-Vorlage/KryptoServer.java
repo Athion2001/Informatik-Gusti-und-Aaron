@@ -15,6 +15,10 @@
  */
 public class KryptoServer extends Server
 {
+
+    public static void main(String args[]){
+        KryptoServer meinKryptoServer = new KryptoServer(8080);
+    }
     public KryptoServer(int pPort)
     {
         super(pPort);
@@ -33,8 +37,8 @@ public class KryptoServer extends Server
     public void processMessage(String pClientIP, int pClientPort, String pMessage)
     {
         // Die Auswertung der Anfrage passiert in bearbeiteAnfrage (ohne Netzwerk).
-        String antwort = bearbeiteAnfrage(pMessage);
-        send(pClientIP, pClientPort, antwort);
+        //String antwort = bearbeiteAnfrage(pMessage);
+        //send(pClientIP, pClientPort, antwort);
 
         // TODO: Wenn euer Protokoll ein Verbindungsende vorsieht (z. B. "ENDE"),
         //       muss der Server hier nach der Antwort die Verbindung beenden
@@ -44,10 +48,10 @@ public class KryptoServer extends Server
         switch(verfahren){
             case "Caesar":
                 if(operation.equals("Verschlüsseln")){
-                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "verschlüsselt :" + Caesar.verschluesseln(feldAn(pMessage,4),feldAn(pMessage,3)));
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "verschluesselt :" + Caesar.verschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
                 }
-                else if(operation.equals("Entschlüsseln"){
-                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "entschlüsselt :" + Caesar.entschluesseln(feldAn(pMessage,4),feldAn(pMessage,3)));
+                else if(operation.equals("Entschlüsseln")){
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "entschluesselt :" + Caesar.entschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
                 }
                 else{
                     send(pClientIP, pClientPort, "-FEHLER:Unbekannter Operator");

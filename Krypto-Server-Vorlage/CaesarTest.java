@@ -7,6 +7,8 @@ public class CaesarTest
 
     public static void main(String[] args)
     {
+        System.out.println( Caesar.verschluesseln("Gustav ist bloed", 1));
+        System.out.println( Viginaer.verschluesseln("Gustav ist bloed", "a"));
         // Grundfaelle
         pruefe("Verschluesseln, Schluessel 3", Caesar.verschluesseln("HALLO", 3), "KDOOR");
         pruefe("Entschluesseln, Schluessel 3", Caesar.entschluesseln("KDOOR", 3), "HALLO");
