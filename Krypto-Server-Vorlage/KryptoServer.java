@@ -48,10 +48,21 @@ public class KryptoServer extends Server
         switch(verfahren){
             case "Caesar":
                 if(operation.equals("Verschlüsseln")){
-                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "verschluesselt :" + Caesar.verschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + " verschluesselt :" + Caesar.verschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
                 }
                 else if(operation.equals("Entschlüsseln")){
-                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + "entschluesselt :" + Caesar.entschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + " entschluesselt :" + Caesar.entschluesseln(feldAn(pMessage,4),Integer.parseInt(feldAn(pMessage,3))));
+                }
+                else{
+                    send(pClientIP, pClientPort, "-FEHLER:Unbekannter Operator");
+                }
+                break;
+            case "Viginaer":
+                if(operation.equals("Verschlüsseln")){
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + " verschluesselt :" + Viginaer.verschluesseln(feldAn(pMessage,4), feldAn(pMessage,3)));
+                }
+                else if(operation.equals("Entschlüsseln")){
+                    send(pClientIP, pClientPort, "Der Text wurde mit " + verfahren + " entschluesselt :" + Viginaer.entschluesseln(feldAn(pMessage,4), feldAn(pMessage,3)));
                 }
                 else{
                     send(pClientIP, pClientPort, "-FEHLER:Unbekannter Operator");

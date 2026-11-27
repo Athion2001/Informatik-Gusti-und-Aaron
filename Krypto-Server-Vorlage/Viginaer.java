@@ -12,9 +12,9 @@ public class Viginaer{
         for(int i = 0;i < pKlartext.length();i++){
             if(sCounter > pSchluessel.length()-1){sCounter = 0;}
             int schluesselValue = (int) (pSchluessel.charAt(sCounter));
-            if((schluesselValue > 96 && schluesselValue < 123)){schluesselValue = schluesselValue - 7 -26 -65}
-            else if(schluesselValue >= 65 && schluesselValue <= 90){schluesselValue = schluesselValue - 65}
-            else{schluesselValue = 0}
+            if((schluesselValue > 96 && schluesselValue < 123)){schluesselValue = schluesselValue - 7 -26 -63;}
+            else if(schluesselValue >= 65 && schluesselValue <= 90){schluesselValue = schluesselValue - 65;}
+            else{schluesselValue = 0;}
             int klartextValue = (int) (pKlartext.charAt(i));
             if((klartextValue < 65) || (klartextValue > 90 && klartextValue < 97) || (klartextValue > 122)){
                 verschluesselt = verschluesselt + pKlartext.charAt(i);
@@ -40,9 +40,9 @@ public class Viginaer{
         for(int i = 0;i < pKlartext.length();i++){
             if(sCounter > pSchluessel.length()-1){sCounter = 0;}
             int schluesselValue = (int) (pSchluessel.charAt(sCounter));
-            while(schluesselValue > 26){
-                schluesselValue = schluesselValue - 26;
-            }
+            if((schluesselValue > 96 && schluesselValue < 123)){schluesselValue = schluesselValue - 7 -26 -63;}
+            else if(schluesselValue >= 65 && schluesselValue <= 90){schluesselValue = schluesselValue - 65;}
+            else{schluesselValue = 0;}
             int klartextValue = (int) (pKlartext.charAt(i));
             if((klartextValue < 65) || (klartextValue > 90 && klartextValue < 97) || (klartextValue > 122)){
                 entschluesselt = entschluesselt + pKlartext.charAt(i);

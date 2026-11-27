@@ -16,17 +16,24 @@ public class KryptoClient extends Client
     }
     public static void main(String[] args) {
         KryptoClient meinClient = new KryptoClient("localhost", 8080);
-        meinClient.Caesar("Verschlüsseln","1","Gustav ist bloed");
-        meinClient.Caesar("Entschlüsseln","1","Hvtubw jtu cmpfe");
+        meinClient.caesar("Verschlüsseln","1","Gustav ist bloed");
+        meinClient.caesar("Entschlüsseln","1","Hvtubw jtu cmpfe");
+        meinClient.viginaer("Verschlüsseln","ab","Gustav ist bloed");
+        meinClient.viginaer("Entschlüsseln","ab","Hwtvbx ktv dmqff");
     }
 
     // ---------------------------------------------------------------
     // Anfragen nach Protokoll
     // ---------------------------------------------------------------
 
-    public void Caesar(String pOperator, String pSchluessel, String pText)
+    public void caesar(String pOperator, String pSchluessel, String pText)
     {
         send("Caesar:" + pOperator + ":" + pSchluessel + ":" + pText);
+    }
+
+    public void viginaer(String pOperator, String pSchluessel, String pText)
+    {
+        send("Viginaer:" + pOperator + ":" + pSchluessel + ":" + pText);
     }
 
     public void beenden()
